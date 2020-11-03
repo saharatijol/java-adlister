@@ -8,25 +8,25 @@ import java.io.PrintWriter;
 
 @WebServlet(name = "ShowStudentServlet", urlPatterns = "/users")
 public class ShowStudentServlet extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
+    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        res.setContentType("text/html");
+        PrintWriter out = res.getWriter();
 
-        String name = request.getParameter("name");
+        String name = req.getParameter("name");
         out.println("<h3>Hello " + name + "</h3>");
 
-        int grade = Integer.parseInt(request.getParameter("grade"));
+        int grade = Integer.parseInt(req.getParameter("grade"));
         out.println("<span>Grade: " + grade + ".00</span>");
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
+    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
+        res.setContentType("text/html");
+        PrintWriter out = res.getWriter();
 
-        String name = request.getParameter("name");
+        String name = req.getParameter("name");
         out.println("<h3>Hello " + name + "</h3>");
 
-        int grade = Integer.parseInt(request.getParameter("grade"));
+        int grade = Integer.parseInt(req.getParameter("grade"));
         out.println("<span>Grade: " + grade + ".00</span>");
     }
 }
