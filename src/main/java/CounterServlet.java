@@ -10,18 +10,26 @@ public class CounterServlet extends HttpServlet {
         private int count = 0;
 
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
-        count += 1;
+        //count += 1;
         res.setContentType("text/html");
         PrintWriter out = res.getWriter();
-        out.println("<h2>Page View count: " + count + "</h2>");
+        String countReset = req.getParameter("countReset");
+        if (countReset != null) {
+            count = 0;
+            out.println("<h2>Page View count: " + count + "</h2>");
+        }
+        else {
+            count += 1;
+            out.println("<h2>Page View count: " + count + "</h2>");
+        }
     }
 
 //    BONUS
-    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
-        res.setContentType("text/html");
-        PrintWriter out = res.getWriter();
-
-        int countReset = Integer.parseInt(req.getParameter("countReset"));
-        out.println("<h2>Page View count: " + countReset + "</h2>");
-    }
+//    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
+//        res.setContentType("text/html");
+//        PrintWriter out = res.getWriter();
+//
+//        int countReset = Integer.parseInt(req.getParameter("countReset"));
+//        out.println("<h2>Page View count: " + countReset + "</h2>");
+//    }
 }
