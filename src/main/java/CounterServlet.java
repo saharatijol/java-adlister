@@ -15,4 +15,13 @@ public class CounterServlet extends HttpServlet {
         PrintWriter out = res.getWriter();
         out.println("<h2>Page View count: " + count + "</h2>");
     }
+
+//    BONUS
+    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
+        res.setContentType("text/html");
+        PrintWriter out = res.getWriter();
+
+        int countReset = Integer.parseInt(req.getParameter("countReset"));
+        out.println("<h2>Page View count: " + countReset + "</h2>");
+    }
 }
