@@ -13,14 +13,17 @@ public class HelloServlet extends HttpServlet {
         if (name == null) {
             name = "World!";
         } else if (name.equals("bgates")) {
-            response.sendRedirect("https://microsoft.com");
-            return;
+//            response.sendRedirect("https://microsoft.com");
+//            return;
+            name = "Bill Gates";
         } else if (name.equals("elonm")) {
-            response.sendRedirect("https://tesla.com");
-            return;
+//            response.sendRedirect("https://tesla.com");
+//            return;
+            name = "Elon Musk";
         } else if (name.equals("jbezos")) {
-            response.sendRedirect("https://amazon.com");
-            return;
+//            response.sendRedirect("https://amazon.com");
+//            return;
+            name = "Jeff Bezos";
         }
         request.setAttribute("name", name);
         request.getRequestDispatcher("/hello.jsp").forward(request, response);
