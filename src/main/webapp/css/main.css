@@ -1,8 +1,9 @@
 body {
-    color: dimgray;
+    background-color: #393e46;
+    color: #eeeeee;
 }
 
 button {
-    background-color: dodgerblue;
-    color: white;
+    background-color: #00adb5;
+    color: #eeeeee;
 }

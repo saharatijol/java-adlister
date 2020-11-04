@@ -24,6 +24,7 @@
     <button type="submit">Login</button>
 </form>
 
+<%--param has better handling with method = null--%>
 <c:choose>
     <c:when test="${param.username == 'admin' && param.password == 'password'}">
         <%response.sendRedirect("/profile.jsp");%>
