@@ -10,8 +10,12 @@
 <html>
 <head>
     <title>Login - JSP/JST Exercise</title>
+    <%@ include file="partials/head.jsp"%>
 </head>
 <body>
+
+<%@ include file="partials/navbar.jsp"%>
+
 <h2>Login</h2>
 
 <form method="POST" action="/login.jsp">
@@ -26,5 +30,8 @@
     </c:when>
 </c:choose>
 
+
+<%@ include file="partials/footer.jsp"%>
+<jsp:include page="partials/scripts.jsp"></jsp:include>
 </body>
 </html>
