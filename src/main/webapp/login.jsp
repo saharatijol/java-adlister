@@ -10,11 +10,13 @@
 <html>
 <head>
     <title>Login - JSP/JST Exercise</title>
-    <%@ include file="partials/head.jsp"%>
+    <jsp:include page="partials/head.jsp">
+        <jsp:param name="title" value="Login Page"/>
+    </jsp:include>
 </head>
 <body>
 
-<%@ include file="partials/navbar.jsp"%>
+<jsp:include page="partials/navbar.jsp"/>
 
 <h2>Login</h2>
 

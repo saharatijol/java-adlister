@@ -9,9 +9,13 @@
 
 <html>
 <head>
-    <title>JSP/JSTL Exercise</title>
+    <jsp:include page="partials/head.jsp">
+        <jsp:param name="title" value="Profile Page"/>
+    </jsp:include>
 </head>
 <body>
+<%@ include file="partials/navbar.jsp"%>
+
 <h1>Welcome Admin!</h1>
 <h2>You are logged in</h2>
 </body>
