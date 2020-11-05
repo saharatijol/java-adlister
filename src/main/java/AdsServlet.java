@@ -7,8 +7,10 @@ import java.io.IOException;
 
 @WebServlet(name = "AdsServlet", urlPatterns = "/ads")
 public class AdsServlet extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+//        request.getRequestDispatcher("ads/index.jsp").forward(request, response);
+        request.setAttribute("ads", DaoFactory.getAdsDao().all());
         request.getRequestDispatcher("ads/index.jsp").forward(request, response);
     }
 }
