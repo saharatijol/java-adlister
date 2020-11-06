@@ -10,6 +10,11 @@
 
     <div class="container">
         <h1>Viewing your profile.</h1>
+        <!-- Follows the MVC design pattern -->
+        <p>Is Admin: ${isAdmin}</p>
+
+        <!-- This part should be handled in the servlet side -->
+        <p>Is Admin: ${sessionScope.get("isAdmin")}</p>
     </div>
 
 </body>
