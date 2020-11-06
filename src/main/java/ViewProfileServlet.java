@@ -17,6 +17,6 @@ public class ViewProfileServlet extends HttpServlet {
         } else {
             request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
         }
-        // NOTE: not having else statement redirects /profile page to 500
+        // NOTE: not having else statement redirects /profile page to 500 after /logout
     }
 }
