@@ -14,6 +14,5 @@
         <p>Is Admin: ${sessionScope.get("isAdmin")}</p>
         <h1>Viewing your profile.</h1>
     </div>
-
 </body>
 </html>
