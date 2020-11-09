@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-
+import java.sql.DriverManager;
 import com.mysql.cj.jdbc.Driver;
 import java.sql.*;
 
@@ -49,19 +49,22 @@ public class ListAdsDao implements Ads {
 
     // INSERTING
     public Long insert(Ad ad) {
-        long newAdId = 0;
-        String sql = String.format("INSERT INTO ads('user_id, title, description') VALUES(%d, %s, %s)",
+        long newAdInsert = 0;
+        String sql = String.format("INSERT INTO ads(user_id, title, description) VALUES(%d, '%s', '%s')",
                 ad.getUserId(), ad.getTitle(), ad.getDescription());
         try{
             Statement statement = connection.createStatement();
             statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = statement.getGeneratedKeys();
-            rs.next();
-            newAdId =  rs.getLong(1);
+            //rs.next();
+            if (rs.next()) {
+                newAdInsert =  rs.getLong(1);
+            }
+
         } catch (SQLException throwables){
             throwables.printStackTrace();
         }
-        return newAdId;
+        return newAdInsert;
     }
 
 }
