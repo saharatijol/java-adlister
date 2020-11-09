@@ -5,12 +5,12 @@ import java.sql.DriverManager;
 import com.mysql.cj.jdbc.Driver;
 import java.sql.*;
 
-public class ListAdsDao implements Ads {
+public class MySQLAdsDao implements Ads {
     private Connection connection = null;
     private Config config = new Config();
     private List<Ad> ads;
 
-    public ListAdsDao()  {
+    public MySQLAdsDao()  {
         try {
             DriverManager.registerDriver(new Driver());
             connection = DriverManager.getConnection(
@@ -66,6 +66,5 @@ public class ListAdsDao implements Ads {
         }
         return newAdInsert;
     }
-
 }
 

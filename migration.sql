@@ -25,6 +25,6 @@ INSERT INTO users(id, username, email, password)
 VALUES (1 ,'chillyprowler', 'chillyprowler@gmail.com', 'idk');
 
 INSERT INTO ads(user_id, title, description)
-VALUES (1 ,'Gaming PC', 'great condition')
+VALUES (1 ,'Gaming PC', 'great condition');
 
 SELECT * FROM ads;
