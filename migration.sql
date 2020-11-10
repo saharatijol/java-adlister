@@ -1,4 +1,4 @@
-USE adlister_db;
+USE adlister_bio;
 
 DROP TABLE IF EXISTS ads;
 DROP TABLE IF EXISTS users;
@@ -20,6 +20,15 @@ CREATE TABLE ads (
     FOREIGN KEY (user_id) REFERENCES users(id)
         ON DELETE CASCADE
 );
+INSERT INTO users(username, email, password)
+    VALUES('child''s play', 'chucky@gmail.com', 'sdfsdffsdd');
+
+INSERT INTO users(username, email, password)
+VALUES ('rickyyy', 'rickyy@gmail.com', '654182'),
+       ('biancar', 'mamba@gmail.com', 'isjdf13'),
+       ('calebW', 'machine@gmail.com', 'odfkg85'),
+       ('blossomp', 'berkserker@gmail.com', ';dfjgnlk9'),
+       ('stijol', 'clown@gmail.com', 'kjdnfgk123');
 
 select * from users;
 select * from ads;
