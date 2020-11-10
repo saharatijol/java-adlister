@@ -15,6 +15,13 @@ public class User {
         this.password = password;
     }
 
+    // Had to create an overloaded constructor for register servlet to work
+    public User( String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+
     public long getId() {
         return id;
     }
