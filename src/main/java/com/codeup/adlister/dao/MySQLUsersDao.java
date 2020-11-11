@@ -3,10 +3,11 @@ package com.codeup.adlister.dao;
 import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
+import java.io.IOException;
 import java.sql.*;
 
 public class MySQLUsersDao implements Users{
-    private final Connection connection;
+    private Connection connection;
 
     public MySQLUsersDao(Config config) {
         try {
@@ -23,7 +24,26 @@ public class MySQLUsersDao implements Users{
 
     @Override
     public User findByUsername(String username) {
-        return null;
+        User findUser;
+
+        try {
+            String sql = "SELECT * FROM users WHERE username = ? LIMIT 1";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, username);
+            stmt.executeQuery();
+            ResultSet rs = stmt.getResultSet();
+            rs.next();
+                findUser = new User(
+                        rs.getLong("id"),
+                        rs.getString("username"),
+                        rs.getString("email"),
+                        rs.getString("password")
+                );
+                return findUser;
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error finding user.", e);
+        }
     }
 
     @Override
@@ -39,7 +59,7 @@ public class MySQLUsersDao implements Users{
             rs.next();
             return rs.getLong(1);
         } catch (SQLException e) {
-            throw new RuntimeException("Error creating a new ad.", e);
+            throw new RuntimeException("Error creating a new user.", e);
         }
     }
 }
