@@ -24,7 +24,7 @@ public class MySQLUsersDao implements Users{
 
     @Override
     public User findByUsername(String username) {
-        User findUser;
+        //User findUser;
 
         try {
             String sql = "SELECT * FROM users WHERE username = ? LIMIT 1";
@@ -32,18 +32,19 @@ public class MySQLUsersDao implements Users{
             stmt.setString(1, username);
             stmt.executeQuery();
             ResultSet rs = stmt.getResultSet();
-            rs.next();
-                findUser = new User(
+            if(rs.next()) {
+                return new User(
                         rs.getLong("id"),
                         rs.getString("username"),
                         rs.getString("email"),
                         rs.getString("password")
                 );
-                return findUser;
+            }
 
         } catch (SQLException e) {
             throw new RuntimeException("Error finding user.", e);
         }
+        return null; // this handles the error to match LoginServlet
     }
 
     @Override

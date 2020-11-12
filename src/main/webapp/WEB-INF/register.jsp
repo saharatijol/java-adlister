@@ -9,6 +9,8 @@
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp"/>
+<%--        <jsp: param name="title" value="Sign Up!"/>--%>
+<%--    </jsp:include>--%>
     <title>Sign Up!</title>
 </head>
 <body>
@@ -28,6 +30,10 @@
         <div class="form-group">
             <label for="password">Password</label>
             <input id="password" name="password" class="form-control" type="password">
+        </div>
+        <div class="form-group">
+            <label for="password_confirm">Confirm Password</label>
+            <input type="password" id="password_confirm" class="form-control" type="password">
         </div>
         <input type="submit" class="btn btn-primary btn-block" value="Sign up">
     </form>
