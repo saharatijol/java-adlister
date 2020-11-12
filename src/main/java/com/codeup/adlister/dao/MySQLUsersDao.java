@@ -3,6 +3,8 @@ package com.codeup.adlister.dao;
 import com.codeup.adlister.models.User;
 import com.mysql.cj.jdbc.Driver;
 
+
+
 import java.sql.*;
 
 public class MySQLUsersDao implements Users {
@@ -28,10 +30,20 @@ public class MySQLUsersDao implements Users {
         try {
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setString(1, username);
-            return extractUser(stmt.executeQuery());
+
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return new User(
+                        rs.getLong("id"),
+                        rs.getString("username"),
+                        rs.getString("email"),
+                        rs.getString("password")
+                );
+            }
         } catch (SQLException e) {
             throw new RuntimeException("Error finding a user by username", e);
         }
+        return null;
     }
 
     @Override
@@ -51,16 +63,16 @@ public class MySQLUsersDao implements Users {
         }
     }
 
-    private User extractUser(ResultSet rs) throws SQLException {
-        if (! rs.next()) {
-            return null;
-        }
-        return new User(
-            rs.getLong("id"),
-            rs.getString("username"),
-            rs.getString("email"),
-            rs.getString("password")
-        );
-    }
+//    private User extractUser(ResultSet rs) throws SQLException {
+//        if (! rs.next()) {
+//            return null;
+//        }
+//        return new User(
+//            rs.getLong("id"),
+//            rs.getString("username"),
+//            rs.getString("email"),
+//            rs.getString("password")
+//        );
+//    }
 
 }

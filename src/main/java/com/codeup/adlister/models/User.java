@@ -1,5 +1,7 @@
 package com.codeup.adlister.models;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 public class User {
     private long id;
     private String username;
@@ -11,7 +13,8 @@ public class User {
     public User(String username, String email, String password) {
         this.username = username;
         this.email = email;
-        this.password = password;
+        //this.password = password;
+        this.setPassword(password);
     }
 
     public User(long id, String username, String email, String password) {
@@ -19,6 +22,7 @@ public class User {
         this.username = username;
         this.email = email;
         this.password = password;
+        //this.setPassword(password);
     }
 
     public long getId() {
@@ -50,6 +54,6 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = BCrypt.hashpw(password, BCrypt.gensalt());
     }
 }
