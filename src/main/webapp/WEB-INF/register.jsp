@@ -33,7 +33,7 @@
         </div>
         <div class="form-group">
             <label for="password_confirm">Confirm Password</label>
-            <input type="password" id="password_confirm" class="form-control" type="password">
+            <input type="password" id="password_confirm" name="password_confirm" class="form-control" type="password">
         </div>
         <input type="submit" class="btn btn-primary btn-block" value="Sign up">
     </form>

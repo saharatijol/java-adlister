@@ -27,7 +27,10 @@ public class RegisterServlet extends HttpServlet {
         // TODO: create a new user based off of the submitted information
         boolean invalidInp = username.isEmpty() || email.isEmpty() || password.isEmpty() || (!password.equals(passwordConfirm));
 
+        //System.out.println(username + email + password);
+
         if(invalidInp) {
+            System.out.println("false");
             response.sendRedirect("/register");
             return;
         }
@@ -35,7 +38,10 @@ public class RegisterServlet extends HttpServlet {
         User user = new User (username, email, password);
 
         // TODO: if a user was successfully created, send them to their profile
+        //System.out.println("false");
+        request.getSession().setAttribute("user", user); // remember to get session for redirect to work
         DaoFactory.getUsersDao().insert(user);
-        response.sendRedirect("/login");
+        response.sendRedirect("/profile");
+
     }
 }
